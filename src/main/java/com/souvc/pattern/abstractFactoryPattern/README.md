@@ -102,7 +102,6 @@ public class Circle implements Shape {
 
 为颜色创建一个接口，并定义一个填充颜色的方法。Color.java
 
-
 ```java
 public interface Color {
    void fill();
@@ -112,7 +111,10 @@ public interface Color {
 
 ### 步骤 4
 
-创建实现接口的实体类。这些实体类分别是红色，绿色，蓝色实现颜色的接口，并实现填充方法
+创建实现接口的实体类。
+
+
+Red实现画红色功能
 
 ```java
 public class Red implements Color {
@@ -124,6 +126,7 @@ public class Red implements Color {
 }
 ```
 
+Green实现画绿色功能
 
 ```java
 public class Green implements Color {
@@ -135,6 +138,7 @@ public class Green implements Color {
 }
 ```
 
+Blue实现画蓝色功能
 
 ```java
 public class Blue implements Color {
@@ -294,7 +298,8 @@ public class AbstractFactoryPatternDemo {
 }
 
 ```
-步骤 9
+### 步骤 9
+
 执行程序，输出结果：
 
 ```
