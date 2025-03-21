@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板方法模式 - 设计模式学习</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <!-- 移动端状态栏 -->
+    <div class="status-bar bg-black text-white text-xs p-1">
+        <div class="flex justify-between items-center">
+            <span>9:41</span>
+            <div class="flex space-x-1">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="container mx-auto max-w-md bg-white min-h-screen rounded-t-3xl shadow-lg">
+        <!-- 导航栏 -->
+        <nav class="bg-white p-4 border-b flex items-center">
+            <a href="../index.html" class="text-gray-600">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <h1 class="text-xl font-bold text-center flex-1">模板方法模式</h1>
+        </nav>
+
+        <!-- 内容区域 -->
+        <div class="p-4 space-y-6">
+            <!-- 模式介绍 -->
+            <section>
+                <h2 class="text-lg font-bold mb-2">模式介绍</h2>
+                <p class="text-gray-600">
+                    模板方法模式是一种行为型设计模式，它定义了一个操作中的算法骨架，将某些步骤延迟到子类中实现。模板方法使得子类可以不改变算法的结构即可重新定义算法的某些特定步骤。
+                </p>
+            </section>
+
+            <!-- 使用场景 -->
+            <section>
+                <h2 class="text-lg font-bold mb-2">使用场景</h2>
+                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                    <li>当一次性实现一个算法的不变部分，并将可变的行为留给子类来实现时</li>
+                    <li>当各子类中公共的行为应被提取出来并集中到一个公共父类中时</li>
+                    <li>当控制子类扩展时</li>
+                </ul>
+            </section>
+
+            <!-- 代码示例 -->
+            <section>
+                <h2 class="text-lg font-bold mb-2">代码示例</h2>
+                <div class="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">
+                    <pre><code>// 抽象类
+public abstract class AbstractClass {
+    // 模板方法
+    public final void templateMethod() {
+        primitiveOperation1();
+        primitiveOperation2();
+        hook();
+    }
+    
+    // 基本方法1
+    protected abstract void primitiveOperation1();
+    
+    // 基本方法2
+    protected abstract void primitiveOperation2();
+    
+    // 钩子方法
+    protected void hook() {
+        // 默认空实现
+    }
+}
+
+// 具体类A
+public class ConcreteClassA extends AbstractClass {
+    @Override
+    protected void primitiveOperation1() {
+        System.out.println("ConcreteClassA: primitiveOperation1");
+    }
+    
+    @Override
+    protected void primitiveOperation2() {
+        System.out.println("ConcreteClassA: primitiveOperation2");
+    }
+}
+
+// 具体类B
+public class ConcreteClassB extends AbstractClass {
+    @Override
+    protected void primitiveOperation1() {
+        System.out.println("ConcreteClassB: primitiveOperation1");
+    }
+    
+    @Override
+    protected void primitiveOperation2() {
+        System.out.println("ConcreteClassB: primitiveOperation2");
+    }
+}</code></pre>
+                </div>
+            </section>
+
+            <!-- 优缺点 -->
+            <section>
+                <h2 class="text-lg font-bold mb-2">优缺点</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-green-700 mb-2">优点</h3>
+                        <ul class="list-disc list-inside text-green-600">
+                            <li>提高代码复用性</li>
+                            <li>扩展性好</li>
+                            <li>符合开闭原则</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-red-700 mb-2">缺点</h3>
+                        <ul class="list-disc list-inside text-red-600">
+                            <li>类的数量增加</li>
+                            <li>增加了系统复杂度</li>
+                            <li>继承关系自身缺点</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 底部导航栏 -->
+        <div class="fixed bottom-0 w-full max-w-md bg-white border-t">
+            <div class="flex justify-around p-4">
+                <a href="../index.html" class="text-gray-600">
+                    <i class="fas fa-home"></i>
+                    <span class="text-xs">首页</span>
+                </a>
+                <a href="#" class="text-blue-600">
+                    <i class="fas fa-book"></i>
+                    <span class="text-xs">学习</span>
+                </a>
+                <a href="#" class="text-gray-600">
+                    <i class="fas fa-user"></i>
+                    <span class="text-xs">我的</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html> 

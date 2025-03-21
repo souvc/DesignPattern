@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设计模式学习平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen">
+    <!-- 移动端状态栏 -->
+    <div class="status-bar bg-black text-white text-xs p-1 fixed top-0 left-0 right-0 z-50">
+        <div class="flex justify-between items-center">
+            <span>9:41</span>
+            <div class="flex space-x-1">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="container mx-auto max-w-md bg-white min-h-screen rounded-t-3xl shadow-lg mt-6">
+        <!-- 导航栏 -->
+        <nav class="bg-white p-4 border-b">
+            <h1 class="text-2xl font-bold text-center text-gray-800">设计模式学习</h1>
+            <p class="text-sm text-gray-500 text-center mt-1">23种设计模式详解</p>
+        </nav>
+
+        <!-- 内容区域 -->
+        <div class="p-4">
+            <!-- 搜索框 -->
+            <div class="mb-6">
+                <div class="relative">
+                    <input type="text" placeholder="搜索设计模式..." class="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300">
+                    <i class="fas fa-search absolute right-4 top-3 text-gray-400"></i>
+                </div>
+            </div>
+
+            <!-- 设计模式分类卡片 -->
+            <div class="grid grid-cols-2 gap-4">
+                <!-- 创建型模式 -->
+                <div class="pattern-card bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-cube text-blue-500 text-xl mr-2"></i>
+                        <h3 class="font-bold text-blue-700">创建型模式</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li><a href="patterns/factory.html" class="text-blue-600 hover:text-blue-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>工厂模式</a></li>
+                        <li><a href="patterns/singleton.html" class="text-blue-600 hover:text-blue-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>单例模式</a></li>
+                        <li><a href="patterns/builder.html" class="text-blue-600 hover:text-blue-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>建造者模式</a></li>
+                        <li><a href="patterns/prototype.html" class="text-blue-600 hover:text-blue-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>原型模式</a></li>
+                    </ul>
+                </div>
+
+                <!-- 结构型模式 -->
+                <div class="pattern-card bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-puzzle-piece text-green-500 text-xl mr-2"></i>
+                        <h3 class="font-bold text-green-700">结构型模式</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li><a href="patterns/adapter.html" class="text-green-600 hover:text-green-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>适配器模式</a></li>
+                        <li><a href="patterns/bridge.html" class="text-green-600 hover:text-green-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>桥接模式</a></li>
+                        <li><a href="patterns/composite.html" class="text-green-600 hover:text-green-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>组合模式</a></li>
+                        <li><a href="patterns/decorator.html" class="text-green-600 hover:text-green-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>装饰器模式</a></li>
+                        <li><a href="patterns/facade.html" class="text-green-600 hover:text-green-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>外观模式</a></li>
+                        <li><a href="patterns/flyweight.html" class="text-green-600 hover:text-green-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>享元模式</a></li>
+                        <li><a href="patterns/proxy.html" class="text-green-600 hover:text-green-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>代理模式</a></li>
+                    </ul>
+                </div>
+
+                <!-- 行为型模式 -->
+                <div class="pattern-card bg-gradient-to-br from-purple-50 to-purple-100 p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-brain text-purple-500 text-xl mr-2"></i>
+                        <h3 class="font-bold text-purple-700">行为型模式</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li><a href="patterns/chain.html" class="text-purple-600 hover:text-purple-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>责任链模式</a></li>
+                        <li><a href="patterns/command.html" class="text-purple-600 hover:text-purple-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>命令模式</a></li>
+                        <li><a href="patterns/interpreter.html" class="text-purple-600 hover:text-purple-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>解释器模式</a></li>
+                        <li><a href="patterns/iterator.html" class="text-purple-600 hover:text-purple-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>迭代器模式</a></li>
+                        <li><a href="patterns/mediator.html" class="text-purple-600 hover:text-purple-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>中介者模式</a></li>
+                        <li><a href="patterns/memento.html" class="text-purple-600 hover:text-purple-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>备忘录模式</a></li>
+                        <li><a href="patterns/observer.html" class="text-purple-600 hover:text-purple-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>观察者模式</a></li>
+                        <li><a href="patterns/state.html" class="text-purple-600 hover:text-purple-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>状态模式</a></li>
+                        <li><a href="patterns/strategy.html" class="text-purple-600 hover:text-purple-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>策略模式</a></li>
+                        <li><a href="patterns/template.html" class="text-purple-600 hover:text-purple-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>模板方法模式</a></li>
+                        <li><a href="patterns/visitor.html" class="text-purple-600 hover:text-purple-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>访问者模式</a></li>
+                        <li><a href="patterns/null.html" class="text-purple-600 hover:text-purple-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>空对象模式</a></li>
+                    </ul>
+                </div>
+
+                <!-- J2EE模式 -->
+                <div class="pattern-card bg-gradient-to-br from-yellow-50 to-yellow-100 p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-server text-yellow-500 text-xl mr-2"></i>
+                        <h3 class="font-bold text-yellow-700">J2EE模式</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li><a href="patterns/mvc.html" class="text-yellow-600 hover:text-yellow-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>MVC模式</a></li>
+                        <li><a href="patterns/business-delegate.html" class="text-yellow-600 hover:text-yellow-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>业务代表模式</a></li>
+                        <li><a href="patterns/composite-entity.html" class="text-yellow-600 hover:text-yellow-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>组合实体模式</a></li>
+                        <li><a href="patterns/dao.html" class="text-yellow-600 hover:text-yellow-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>数据访问对象模式</a></li>
+                        <li><a href="patterns/front-controller.html" class="text-yellow-600 hover:text-yellow-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>前端控制器模式</a></li>
+                        <li><a href="patterns/intercepting-filter.html" class="text-yellow-600 hover:text-yellow-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>拦截过滤器模式</a></li>
+                        <li><a href="patterns/service-locator.html" class="text-yellow-600 hover:text-yellow-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>服务定位器模式</a></li>
+                        <li><a href="patterns/transfer-object.html" class="text-yellow-600 hover:text-yellow-800 flex items-center group"><i class="fas fa-chevron-right text-xs mr-1 transform group-hover:translate-x-1 transition-transform"></i>传输对象模式</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部导航栏 -->
+        <div class="fixed bottom-0 w-full max-w-md bg-white border-t">
+            <div class="flex justify-around p-4">
+                <a href="#" class="text-blue-600">
+                    <i class="fas fa-home"></i>
+                    <span class="text-xs">首页</span>
+                </a>
+                <a href="about.html" class="text-gray-600">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="text-xs">关于我们</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

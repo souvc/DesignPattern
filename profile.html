@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心 - 设计模式学习平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen">
+    <!-- 移动端状态栏 -->
+    <div class="status-bar bg-black text-white text-xs p-1">
+        <div class="flex justify-between items-center">
+            <span>9:41</span>
+            <div class="flex space-x-1">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="container mx-auto max-w-md bg-white min-h-screen rounded-t-3xl shadow-lg">
+        <!-- 导航栏 -->
+        <nav class="bg-white p-4 border-b">
+            <div class="flex items-center">
+                <a href="index.html" class="text-gray-600 mr-4">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <h1 class="text-xl font-bold text-gray-800">个人中心</h1>
+            </div>
+        </nav>
+
+        <!-- 内容区域 -->
+        <div class="p-4">
+            <!-- 用户信息卡片 -->
+            <div class="bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl p-6 text-white mb-6">
+                <div class="flex items-center">
+                    <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center">
+                        <i class="fas fa-user text-2xl text-blue-500"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h2 class="text-xl font-bold">开发者小王</h2>
+                        <p class="text-sm opacity-80">Java高级工程师</p>
+                    </div>
+                </div>
+                <div class="mt-4 flex justify-between">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold">12</div>
+                        <div class="text-sm opacity-80">学习天数</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold">8</div>
+                        <div class="text-sm opacity-80">收藏数</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold">25%</div>
+                        <div class="text-sm opacity-80">完成度</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 功能列表 -->
+            <div class="space-y-4">
+                <!-- 学习记录 -->
+                <div class="bg-white rounded-lg p-4 shadow-sm">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <i class="fas fa-history text-blue-500 mr-3"></i>
+                            <span class="text-gray-800">学习记录</span>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-400"></i>
+                    </div>
+                </div>
+
+                <!-- 我的收藏 -->
+                <div class="bg-white rounded-lg p-4 shadow-sm">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-500 mr-3"></i>
+                            <span class="text-gray-800">我的收藏</span>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-400"></i>
+                    </div>
+                </div>
+
+                <!-- 学习计划 -->
+                <div class="bg-white rounded-lg p-4 shadow-sm">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <i class="fas fa-calendar-alt text-green-500 mr-3"></i>
+                            <span class="text-gray-800">学习计划</span>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-400"></i>
+                    </div>
+                </div>
+
+                <!-- 学习统计 -->
+                <div class="bg-white rounded-lg p-4 shadow-sm">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <i class="fas fa-chart-bar text-purple-500 mr-3"></i>
+                            <span class="text-gray-800">学习统计</span>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-400"></i>
+                    </div>
+                </div>
+
+                <!-- 设置 -->
+                <div class="bg-white rounded-lg p-4 shadow-sm">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <i class="fas fa-cog text-gray-500 mr-3"></i>
+                            <span class="text-gray-800">设置</span>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-400"></i>
+                    </div>
+                </div>
+
+                <!-- 关于我们 -->
+                <div class="bg-white rounded-lg p-4 shadow-sm">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <i class="fas fa-info-circle text-blue-500 mr-3"></i>
+                            <span class="text-gray-800">关于我们</span>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部导航栏 -->
+        <div class="fixed bottom-0 w-full max-w-md bg-white border-t">
+            <div class="flex justify-around p-4">
+                <a href="index.html" class="text-gray-600">
+                    <i class="fas fa-home"></i>
+                    <span class="text-xs">首页</span>
+                </a>
+                <a href="learn.html" class="text-gray-600">
+                    <i class="fas fa-book"></i>
+                    <span class="text-xs">学习</span>
+                </a>
+                <a href="profile.html" class="text-blue-600">
+                    <i class="fas fa-user"></i>
+                    <span class="text-xs">我的</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

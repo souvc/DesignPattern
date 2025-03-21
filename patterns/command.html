@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>命令模式 - 设计模式学习</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <!-- 移动端状态栏 -->
+    <div class="status-bar bg-black text-white text-xs p-1">
+        <div class="flex justify-between items-center">
+            <span>9:41</span>
+            <div class="flex space-x-1">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="container mx-auto max-w-md bg-white min-h-screen rounded-t-3xl shadow-lg">
+        <!-- 导航栏 -->
+        <nav class="bg-white p-4 border-b flex items-center">
+            <a href="../index.html" class="text-gray-600">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <h1 class="text-xl font-bold text-center flex-1">命令模式</h1>
+        </nav>
+
+        <!-- 内容区域 -->
+        <div class="p-4 space-y-6">
+            <!-- 模式介绍 -->
+            <section>
+                <h2 class="text-lg font-bold mb-2">模式介绍</h2>
+                <p class="text-gray-600">
+                    命令模式是一种行为型设计模式，它将请求封装为一个对象，从而使您可以用不同的请求对客户进行参数化。命令模式支持请求排队、记录日志、撤销/重做等操作。
+                </p>
+            </section>
+
+            <!-- 使用场景 -->
+            <section>
+                <h2 class="text-lg font-bold mb-2">使用场景</h2>
+                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                    <li>当您需要将请求发送者和接收者解耦时</li>
+                    <li>当您需要支持命令的排队执行、记录日志、撤销/重做等操作时</li>
+                    <li>当您需要支持宏命令（一组命令）时</li>
+                </ul>
+            </section>
+
+            <!-- 代码示例 -->
+            <section>
+                <h2 class="text-lg font-bold mb-2">代码示例</h2>
+                <div class="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">
+                    <pre><code>// 命令接口
+public interface Command {
+    void execute();
+    void undo();
+}
+
+// 具体命令
+public class ConcreteCommand implements Command {
+    private Receiver receiver;
+    
+    public ConcreteCommand(Receiver receiver) {
+        this.receiver = receiver;
+    }
+    
+    @Override
+    public void execute() {
+        receiver.action();
+    }
+    
+    @Override
+    public void undo() {
+        receiver.undo();
+    }
+}
+
+// 调用者
+public class Invoker {
+    private Command command;
+    
+    public void setCommand(Command command) {
+        this.command = command;
+    }
+    
+    public void executeCommand() {
+        command.execute();
+    }
+    
+    public void undoCommand() {
+        command.undo();
+    }
+}</code></pre>
+                </div>
+            </section>
+
+            <!-- 优缺点 -->
+            <section>
+                <h2 class="text-lg font-bold mb-2">优缺点</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-green-700 mb-2">优点</h3>
+                        <ul class="list-disc list-inside text-green-600">
+                            <li>降低了系统的耦合度</li>
+                            <li>新的命令可以很容易地加入到系统中</li>
+                            <li>可以比较容易地设计一个命令队列和宏命令</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-red-700 mb-2">缺点</h3>
+                        <ul class="list-disc list-inside text-red-600">
+                            <li>使用命令模式可能会导致某些系统有过多的具体命令类</li>
+                            <li>命令模式的结果实际上就是调用接收者的一个方法</li>
+                            <li>命令模式可能会增加系统的复杂度</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 底部导航栏 -->
+        <div class="fixed bottom-0 w-full max-w-md bg-white border-t">
+            <div class="flex justify-around p-4">
+                <a href="../index.html" class="text-gray-600">
+                    <i class="fas fa-home"></i>
+                    <span class="text-xs">首页</span>
+                </a>
+                <a href="#" class="text-blue-600">
+                    <i class="fas fa-book"></i>
+                    <span class="text-xs">学习</span>
+                </a>
+                <a href="#" class="text-gray-600">
+                    <i class="fas fa-user"></i>
+                    <span class="text-xs">我的</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html> 

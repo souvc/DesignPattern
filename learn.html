@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习中心 - 设计模式学习平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen">
+    <!-- 移动端状态栏 -->
+    <div class="status-bar bg-black text-white text-xs p-1">
+        <div class="flex justify-between items-center">
+            <span>9:41</span>
+            <div class="flex space-x-1">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="container mx-auto max-w-md bg-white min-h-screen rounded-t-3xl shadow-lg">
+        <!-- 导航栏 -->
+        <nav class="bg-white p-4 border-b">
+            <div class="flex items-center">
+                <a href="index.html" class="text-gray-600 mr-4">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <h1 class="text-xl font-bold text-gray-800">学习中心</h1>
+            </div>
+        </nav>
+
+        <!-- 内容区域 -->
+        <div class="p-4">
+            <!-- 学习统计 -->
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <div class="bg-blue-50 rounded-lg p-4 text-center">
+                    <div class="text-2xl font-bold text-blue-600">12</div>
+                    <div class="text-sm text-gray-600">已学习</div>
+                </div>
+                <div class="bg-green-50 rounded-lg p-4 text-center">
+                    <div class="text-2xl font-bold text-green-600">8</div>
+                    <div class="text-sm text-gray-600">收藏夹</div>
+                </div>
+                <div class="bg-purple-50 rounded-lg p-4 text-center">
+                    <div class="text-2xl font-bold text-purple-600">4</div>
+                    <div class="text-sm text-gray-600">待学习</div>
+                </div>
+            </div>
+
+            <!-- 最近学习 -->
+            <div class="mb-6">
+                <h2 class="text-lg font-bold text-gray-800 mb-4">最近学习</h2>
+                <div class="space-y-3">
+                    <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-medium text-gray-800">工厂模式</h3>
+                                <p class="text-sm text-gray-500">上次学习: 2024-03-18</p>
+                            </div>
+                            <div class="text-blue-600">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-medium text-gray-800">单例模式</h3>
+                                <p class="text-sm text-gray-500">上次学习: 2024-03-17</p>
+                            </div>
+                            <div class="text-blue-600">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 收藏夹 -->
+            <div class="mb-6">
+                <h2 class="text-lg font-bold text-gray-800 mb-4">我的收藏</h2>
+                <div class="space-y-3">
+                    <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-medium text-gray-800">观察者模式</h3>
+                                <p class="text-sm text-gray-500">收藏时间: 2024-03-16</p>
+                            </div>
+                            <div class="text-yellow-600">
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-medium text-gray-800">策略模式</h3>
+                                <p class="text-sm text-gray-500">收藏时间: 2024-03-15</p>
+                            </div>
+                            <div class="text-yellow-600">
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 学习计划 -->
+            <div>
+                <h2 class="text-lg font-bold text-gray-800 mb-4">学习计划</h2>
+                <div class="space-y-3">
+                    <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-medium text-gray-800">本周目标</h3>
+                                <p class="text-sm text-gray-500">计划学习3个设计模式</p>
+                            </div>
+                            <div class="text-green-600">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-medium text-gray-800">月度目标</h3>
+                                <p class="text-sm text-gray-500">完成所有创建型模式</p>
+                            </div>
+                            <div class="text-blue-600">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部导航栏 -->
+        <div class="fixed bottom-0 w-full max-w-md bg-white border-t">
+            <div class="flex justify-around p-4">
+                <a href="index.html" class="text-gray-600">
+                    <i class="fas fa-home"></i>
+                    <span class="text-xs">首页</span>
+                </a>
+                <a href="learn.html" class="text-blue-600">
+                    <i class="fas fa-book"></i>
+                    <span class="text-xs">学习</span>
+                </a>
+                <a href="profile.html" class="text-gray-600">
+                    <i class="fas fa-user"></i>
+                    <span class="text-xs">我的</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

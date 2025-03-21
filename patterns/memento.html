@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>备忘录模式 - 设计模式学习</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <!-- 移动端状态栏 -->
+    <div class="status-bar bg-black text-white text-xs p-1">
+        <div class="flex justify-between items-center">
+            <span>9:41</span>
+            <div class="flex space-x-1">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="container mx-auto max-w-md bg-white min-h-screen rounded-t-3xl shadow-lg">
+        <!-- 导航栏 -->
+        <nav class="bg-white p-4 border-b flex items-center">
+            <a href="../index.html" class="text-gray-600">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <h1 class="text-xl font-bold text-center flex-1">备忘录模式</h1>
+        </nav>
+
+        <!-- 内容区域 -->
+        <div class="p-4 space-y-6">
+            <!-- 模式介绍 -->
+            <section>
+                <h2 class="text-lg font-bold mb-2">模式介绍</h2>
+                <p class="text-gray-600">
+                    备忘录模式是一种行为型设计模式，它允许在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态，以便以后当需要时能将该对象恢复到原先保存的状态。
+                </p>
+            </section>
+
+            <!-- 使用场景 -->
+            <section>
+                <h2 class="text-lg font-bold mb-2">使用场景</h2>
+                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                    <li>当需要保存对象在某一时刻的状态时</li>
+                    <li>当直接获取对象的状态会暴露实现细节时</li>
+                    <li>当需要实现撤销/重做功能时</li>
+                </ul>
+            </section>
+
+            <!-- 代码示例 -->
+            <section>
+                <h2 class="text-lg font-bold mb-2">代码示例</h2>
+                <div class="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">
+                    <pre><code>// 备忘录类
+public class Memento {
+    private String state;
+    
+    public Memento(String state) {
+        this.state = state;
+    }
+    
+    public String getState() {
+        return state;
+    }
+}
+
+// 发起人
+public class Originator {
+    private String state;
+    
+    public void setState(String state) {
+        this.state = state;
+    }
+    
+    public String getState() {
+        return state;
+    }
+    
+    public Memento createMemento() {
+        return new Memento(state);
+    }
+    
+    public void restoreFromMemento(Memento memento) {
+        state = memento.getState();
+    }
+}
+
+// 管理者
+public class Caretaker {
+    private List<Memento> mementos = new ArrayList<>();
+    
+    public void add(Memento memento) {
+        mementos.add(memento);
+    }
+    
+    public Memento get(int index) {
+        return mementos.get(index);
+    }
+}</code></pre>
+                </div>
+            </section>
+
+            <!-- 优缺点 -->
+            <section>
+                <h2 class="text-lg font-bold mb-2">优缺点</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-green-700 mb-2">优点</h3>
+                        <ul class="list-disc list-inside text-green-600">
+                            <li>可以创建对象状态的快照</li>
+                            <li>简化了发起人</li>
+                            <li>实现了信息的封装</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-red-700 mb-2">缺点</h3>
+                        <ul class="list-disc list-inside text-red-600">
+                            <li>如果状态数据很大，会消耗较多内存</li>
+                            <li>管理者必须跟踪发起人的生命周期</li>
+                            <li>可能会产生大量的备忘录对象</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 底部导航栏 -->
+        <div class="fixed bottom-0 w-full max-w-md bg-white border-t">
+            <div class="flex justify-around p-4">
+                <a href="../index.html" class="text-gray-600">
+                    <i class="fas fa-home"></i>
+                    <span class="text-xs">首页</span>
+                </a>
+                <a href="#" class="text-blue-600">
+                    <i class="fas fa-book"></i>
+                    <span class="text-xs">学习</span>
+                </a>
+                <a href="#" class="text-gray-600">
+                    <i class="fas fa-user"></i>
+                    <span class="text-xs">我的</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html> 

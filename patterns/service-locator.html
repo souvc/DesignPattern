@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服务定位器模式 - 设计模式学习平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen">
+    <!-- 移动端状态栏 -->
+    <div class="status-bar bg-black text-white text-xs p-1 fixed top-0 left-0 right-0 z-50">
+        <div class="flex justify-between items-center">
+            <span>9:41</span>
+            <div class="flex space-x-1">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="container mx-auto max-w-md bg-white min-h-screen rounded-t-3xl shadow-lg mt-6">
+        <!-- 导航栏 -->
+        <nav class="bg-white p-4 border-b">
+            <div class="flex items-center">
+                <a href="../index.html" class="text-gray-600 mr-4">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <h1 class="text-xl font-bold text-gray-800">服务定位器模式</h1>
+            </div>
+        </nav>
+
+        <!-- 内容区域 -->
+        <div class="p-4">
+            <!-- 模式介绍 -->
+            <div class="mb-6">
+                <h2 class="text-lg font-bold text-gray-800 mb-2">模式介绍</h2>
+                <p class="text-gray-600">服务定位器模式（Service Locator Pattern）用于使用 JNDI 查询定位各种服务。考虑到为某个服务查找 JNDI 的代价很高，服务定位器模式充分利用了缓存技术。在首次请求某个服务时，服务定位器在 JNDI 中查找服务，并缓存该服务对象。当再次请求相同的服务时，服务定位器会在缓存中查找，这样在很大程度上可以提高应用程序的性能。</p>
+            </div>
+
+            <!-- 使用场景 -->
+            <div class="mb-6">
+                <h2 class="text-lg font-bold text-gray-800 mb-2">使用场景</h2>
+                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                    <li>需要查找和访问各种服务</li>
+                    <li>需要缓存服务对象</li>
+                    <li>需要统一管理服务访问</li>
+                    <li>需要提高服务访问性能</li>
+                </ul>
+            </div>
+
+            <!-- 代码示例 -->
+            <div class="mb-6">
+                <h2 class="text-lg font-bold text-gray-800 mb-2">代码示例</h2>
+                <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                    <pre class="text-sm text-gray-300">
+// 服务接口
+public interface Service {
+    public String getName();
+    public void execute();
+}
+
+// 服务实现
+public class Service1 implements Service {
+    public void execute() {
+        System.out.println("Executing Service1");
+    }
+    
+    @Override
+    public String getName() {
+        return "Service1";
+    }
+}
+
+public class Service2 implements Service {
+    public void execute() {
+        System.out.println("Executing Service2");
+    }
+    
+    @Override
+    public String getName() {
+        return "Service2";
+    }
+}
+
+// 初始上下文
+public class InitialContext {
+    public Object lookup(String jndiName) {
+        if(jndiName.equalsIgnoreCase("SERVICE1")) {
+            System.out.println("Looking up and creating a new Service1 object");
+            return new Service1();
+        } else if (jndiName.equalsIgnoreCase("SERVICE2")) {
+            System.out.println("Looking up and creating a new Service2 object");
+            return new Service2();
+        }
+        return null;
+    }
+}
+
+// 缓存
+public class Cache {
+    private List<Service> services;
+    
+    public Cache() {
+        services = new ArrayList<Service>();
+    }
+    
+    public Service getService(String serviceName) {
+        for (Service service : services) {
+            if(service.getName().equalsIgnoreCase(serviceName)) {
+                System.out.println("Returning cached  " + serviceName + " object");
+                return service;
+            }
+        }
+        return null;
+    }
+    
+    public void addService(Service newService) {
+        boolean exists = false;
+        for (Service service : services) {
+            if(service.getName().equalsIgnoreCase(newService.getName())) {
+                exists = true;
+            }
+        }
+        if(!exists) {
+            services.add(newService);
+        }
+    }
+}
+
+// 服务定位器
+public class ServiceLocator {
+    private static Cache cache;
+    
+    static {
+        cache = new Cache();
+    }
+    
+    public static Service getService(String jndiName) {
+        Service service = cache.getService(jndiName);
+        
+        if(service != null) {
+            return service;
+        }
+        
+        InitialContext context = new InitialContext();
+        Service service1 = (Service)context.lookup(jndiName);
+        cache.addService(service1);
+        return service1;
+    }
+}
+
+// 使用示例
+public class ServiceLocatorPatternDemo {
+    public static void main(String[] args) {
+        Service service = ServiceLocator.getService("Service1");
+        service.execute();
+        service = ServiceLocator.getService("Service2");
+        service.execute();
+        service = ServiceLocator.getService("Service1");
+        service.execute();
+        service = ServiceLocator.getService("Service2");
+        service.execute();
+    }
+}</pre>
+                </div>
+            </div>
+
+            <!-- 优缺点 -->
+            <div class="mb-6">
+                <h2 class="text-lg font-bold text-gray-800 mb-2">优缺点</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-green-700 mb-2">优点</h3>
+                        <ul class="list-disc list-inside text-green-600 space-y-1">
+                            <li>提高服务访问性能</li>
+                            <li>统一管理服务访问</li>
+                            <li>支持服务缓存</li>
+                            <li>降低系统耦合度</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-red-700 mb-2">缺点</h3>
+                        <ul class="list-disc list-inside text-red-600 space-y-1">
+                            <li>增加了系统复杂度</li>
+                            <li>需要管理缓存</li>
+                            <li>可能占用额外内存</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 注意事项 -->
+            <div>
+                <h2 class="text-lg font-bold text-gray-800 mb-2">注意事项</h2>
+                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                    <li>合理设计缓存策略</li>
+                    <li>注意内存使用</li>
+                    <li>考虑服务更新机制</li>
+                    <li>合理处理异常情况</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 底部导航栏 -->
+        <div class="fixed bottom-0 w-full max-w-md bg-white border-t">
+            <div class="flex justify-around p-4">
+                <a href="../index.html" class="text-gray-600">
+                    <i class="fas fa-home"></i>
+                    <span class="text-xs">首页</span>
+                </a>
+                <a href="../about.html" class="text-gray-600">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="text-xs">关于我们</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html> 

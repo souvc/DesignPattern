@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - 设计模式学习平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen">
+    <!-- 移动端状态栏 -->
+    <div class="status-bar bg-black text-white text-xs p-1 fixed top-0 left-0 right-0 z-50">
+        <div class="flex justify-between items-center">
+            <span>9:41</span>
+            <div class="flex space-x-1">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="container mx-auto max-w-md bg-white min-h-screen rounded-t-3xl shadow-lg mt-6">
+        <!-- 导航栏 -->
+        <nav class="bg-white p-4 border-b">
+            <div class="flex items-center">
+                <a href="index.html" class="text-gray-600 mr-4">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <h1 class="text-xl font-bold text-gray-800">关于我们</h1>
+            </div>
+        </nav>
+
+        <!-- 内容区域 -->
+        <div class="p-4">
+            <!-- 网站介绍 -->
+            <div class="mb-8">
+                <h2 class="text-lg font-bold text-gray-800 mb-4">关于设计模式学习平台</h2>
+                <p class="text-gray-600 leading-relaxed">
+                    设计模式学习平台是一个专注于帮助Java开发者、软件工程师和架构师学习设计模式的在线教育平台。我们通过生动有趣的动画和文字讲解，让设计模式的学习变得更加简单和高效。
+                </p>
+            </div>
+
+            <!-- 作者介绍 -->
+            <div class="mb-8">
+                <h2 class="text-lg font-bold text-gray-800 mb-4">关于作者</h2>
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">刘哥聊技术</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        一个致力于分享技术、职场技能和创业经验方面的知识和经验。内容包括但不限于Java技术、技术趋势、开源项目和技术架构。关注互联网和科技的发展，分享人工智能和其他前沿技术的信息。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 微信公众号 -->
+            <div class="mb-8">
+                <h2 class="text-lg font-bold text-gray-800 mb-4">关注我们</h2>
+                <div class="bg-white rounded-lg p-4 border border-gray-200">
+                    <div class="flex items-center justify-center mb-4">
+                        <i class="fab fa-weixin text-4xl text-green-500"></i>
+                    </div>
+                    <h3 class="text-center font-bold text-gray-800 mb-2">微信公众号</h3>
+                    <p class="text-center text-gray-600 mb-4">扫描下方二维码，关注"刘哥聊技术"</p>
+                    <div class="flex justify-center">
+                        <img src="images/qrcode.jpg" alt="刘哥聊技术公众号二维码" class="w-48 h-48 object-contain rounded-lg shadow-md">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 反馈建议 -->
+            <div class="mb-8">
+                <h2 class="text-lg font-bold text-gray-800 mb-4">反馈与建议</h2>
+                <div class="bg-white rounded-lg p-4 border border-gray-200">
+                    <p class="text-gray-600 mb-4">
+                        如果您对网站有任何建议或意见，欢迎通过以下方式联系我们：
+                    </p>
+                    <div class="space-y-2">
+                        <div class="flex items-center text-gray-600">
+                            <i class="fab fa-github mr-2"></i>
+                            <span>GitHub：github.com/souvc</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部导航栏 -->
+        <div class="fixed bottom-0 w-full max-w-md bg-white border-t">
+            <div class="flex justify-around p-4">
+                <a href="index.html" class="text-gray-600">
+                    <i class="fas fa-home"></i>
+                    <span class="text-xs">首页</span>
+                </a>
+                <a href="about.html" class="text-blue-600">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="text-xs">关于我们</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

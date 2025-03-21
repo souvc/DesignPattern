@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVC模式 - 设计模式学习平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen">
+    <!-- 移动端状态栏 -->
+    <div class="status-bar bg-black text-white text-xs p-1 fixed top-0 left-0 right-0 z-50">
+        <div class="flex justify-between items-center">
+            <span>9:41</span>
+            <div class="flex space-x-1">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="container mx-auto max-w-md bg-white min-h-screen rounded-t-3xl shadow-lg mt-6">
+        <!-- 导航栏 -->
+        <nav class="bg-white p-4 border-b">
+            <div class="flex items-center">
+                <a href="../index.html" class="text-gray-600 mr-4">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <h1 class="text-xl font-bold text-gray-800">MVC模式</h1>
+            </div>
+        </nav>
+
+        <!-- 内容区域 -->
+        <div class="p-4">
+            <!-- 模式介绍 -->
+            <div class="mb-6">
+                <h2 class="text-lg font-bold text-gray-800 mb-2">模式介绍</h2>
+                <p class="text-gray-600">MVC模式（Model-View-Controller Pattern）是一种软件架构模式，它将应用程序分为三个核心部分：模型（Model）、视图（View）和控制器（Controller）。</p>
+            </div>
+
+            <!-- 使用场景 -->
+            <div class="mb-6">
+                <h2 class="text-lg font-bold text-gray-800 mb-2">使用场景</h2>
+                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                    <li>Web应用程序开发</li>
+                    <li>桌面应用程序开发</li>
+                    <li>移动应用程序开发</li>
+                    <li>需要分离业务逻辑和用户界面的场景</li>
+                </ul>
+            </div>
+
+            <!-- 代码示例 -->
+            <div class="mb-6">
+                <h2 class="text-lg font-bold text-gray-800 mb-2">代码示例</h2>
+                <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto">
+                    <pre class="text-sm text-gray-300">
+// 模型
+public class Student {
+    private String name;
+    private String rollNo;
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String getRollNo() {
+        return rollNo;
+    }
+    
+    public void setRollNo(String rollNo) {
+        this.rollNo = rollNo;
+    }
+}
+
+// 视图
+public class StudentView {
+    public void printStudentDetails(String studentName, String studentRollNo) {
+        System.out.println("Student: ");
+        System.out.println("Name: " + studentName);
+        System.out.println("Roll No: " + studentRollNo);
+    }
+}
+
+// 控制器
+public class StudentController {
+    private Student model;
+    private StudentView view;
+    
+    public StudentController(Student model, StudentView view) {
+        this.model = model;
+        this.view = view;
+    }
+    
+    public void setStudentName(String name) {
+        model.setName(name);
+    }
+    
+    public String getStudentName() {
+        return model.getName();
+    }
+    
+    public void setStudentRollNo(String rollNo) {
+        model.setRollNo(rollNo);
+    }
+    
+    public String getStudentRollNo() {
+        return model.getRollNo();
+    }
+    
+    public void updateView() {
+        view.printStudentDetails(model.getName(), model.getRollNo());
+    }
+}</pre>
+                </div>
+            </div>
+
+            <!-- 优缺点 -->
+            <div class="mb-6">
+                <h2 class="text-lg font-bold text-gray-800 mb-2">优缺点</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-green-700 mb-2">优点</h3>
+                        <ul class="list-disc list-inside text-green-600 space-y-1">
+                            <li>分离关注点</li>
+                            <li>代码复用性高</li>
+                            <li>维护性好</li>
+                            <li>支持并行开发</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-red-700 mb-2">缺点</h3>
+                        <ul class="list-disc list-inside text-red-600 space-y-1">
+                            <li>增加了系统复杂性</li>
+                            <li>视图和控制器耦合度高</li>
+                            <li>不适合小型应用</li>
+                            <li>调试困难</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 注意事项 -->
+            <div>
+                <h2 class="text-lg font-bold text-gray-800 mb-2">注意事项</h2>
+                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                    <li>合理划分MVC职责</li>
+                    <li>避免视图和控制器过度耦合</li>
+                    <li>模型应该保持独立</li>
+                    <li>注意数据流向</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 底部导航栏 -->
+        <div class="fixed bottom-0 w-full max-w-md bg-white border-t">
+            <div class="flex justify-around p-4">
+                <a href="../index.html" class="text-gray-600">
+                    <i class="fas fa-home"></i>
+                    <span class="text-xs">首页</span>
+                </a>
+                <a href="../learn.html" class="text-gray-600">
+                    <i class="fas fa-book"></i>
+                    <span class="text-xs">学习</span>
+                </a>
+                <a href="../profile.html" class="text-gray-600">
+                    <i class="fas fa-user"></i>
+                    <span class="text-xs">我的</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>状态模式 - 设计模式学习</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <!-- 移动端状态栏 -->
+    <div class="status-bar bg-black text-white text-xs p-1">
+        <div class="flex justify-between items-center">
+            <span>9:41</span>
+            <div class="flex space-x-1">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="container mx-auto max-w-md bg-white min-h-screen rounded-t-3xl shadow-lg">
+        <!-- 导航栏 -->
+        <nav class="bg-white p-4 border-b flex items-center">
+            <a href="../index.html" class="text-gray-600">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <h1 class="text-xl font-bold text-center flex-1">状态模式</h1>
+        </nav>
+
+        <!-- 内容区域 -->
+        <div class="p-4 space-y-6">
+            <!-- 模式介绍 -->
+            <section>
+                <h2 class="text-lg font-bold mb-2">模式介绍</h2>
+                <p class="text-gray-600">
+                    状态模式是一种行为型设计模式，它允许对象在内部状态改变时改变它的行为，使对象看起来似乎修改了它的类。状态模式将状态封装成独立的类，并将动作委托到代表当前状态的对象。
+                </p>
+            </section>
+
+            <!-- 使用场景 -->
+            <section>
+                <h2 class="text-lg font-bold mb-2">使用场景</h2>
+                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                    <li>当一个对象的行为取决于它的状态，并且它必须在运行时根据状态改变它的行为时</li>
+                    <li>当代码中包含大量与对象状态有关的条件语句时</li>
+                    <li>当对象的状态转换逻辑比较复杂时</li>
+                </ul>
+            </section>
+
+            <!-- 代码示例 -->
+            <section>
+                <h2 class="text-lg font-bold mb-2">代码示例</h2>
+                <div class="bg-gray-800 text-white p-4 rounded-lg overflow-x-auto">
+                    <pre><code>// 状态接口
+public interface State {
+    void handle(Context context);
+}
+
+// 上下文类
+public class Context {
+    private State state;
+    
+    public Context(State state) {
+        this.state = state;
+    }
+    
+    public void setState(State state) {
+        this.state = state;
+    }
+    
+    public void request() {
+        state.handle(this);
+    }
+}
+
+// 具体状态A
+public class ConcreteStateA implements State {
+    @Override
+    public void handle(Context context) {
+        System.out.println("State A handling request");
+        context.setState(new ConcreteStateB());
+    }
+}
+
+// 具体状态B
+public class ConcreteStateB implements State {
+    @Override
+    public void handle(Context context) {
+        System.out.println("State B handling request");
+        context.setState(new ConcreteStateA());
+    }
+}</code></pre>
+                </div>
+            </section>
+
+            <!-- 优缺点 -->
+            <section>
+                <h2 class="text-lg font-bold mb-2">优缺点</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-green-700 mb-2">优点</h3>
+                        <ul class="list-disc list-inside text-green-600">
+                            <li>将与特定状态相关的代码局部化</li>
+                            <li>消除了庞大的条件分支语句</li>
+                            <li>使状态转换显式化</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-red-700 mb-2">缺点</h3>
+                        <ul class="list-disc list-inside text-red-600">
+                            <li>增加了系统中类的数量</li>
+                            <li>状态转换逻辑可能变得复杂</li>
+                            <li>可能导致状态类之间的耦合</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 底部导航栏 -->
+        <div class="fixed bottom-0 w-full max-w-md bg-white border-t">
+            <div class="flex justify-around p-4">
+                <a href="../index.html" class="text-gray-600">
+                    <i class="fas fa-home"></i>
+                    <span class="text-xs">首页</span>
+                </a>
+                <a href="#" class="text-blue-600">
+                    <i class="fas fa-book"></i>
+                    <span class="text-xs">学习</span>
+                </a>
+                <a href="#" class="text-gray-600">
+                    <i class="fas fa-user"></i>
+                    <span class="text-xs">我的</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html> 

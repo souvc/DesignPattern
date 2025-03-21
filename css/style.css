@@ -1,0 +1,58 @@
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .container {
+        margin: 0;
+        border-radius: 0;
+    }
+}
+
+/* 状态栏样式 */
+.status-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+/* 卡片动画效果 */
+.pattern-card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.pattern-card:hover {
+    transform: translateY(-5px);
+}
+
+/* 底部导航栏样式 */
+.fixed.bottom-0 {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* 链接样式 */
+a {
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+} 
