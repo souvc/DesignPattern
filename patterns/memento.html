@@ -9,17 +9,7 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
-    <!-- 移动端状态栏 -->
-    <div class="status-bar bg-black text-white text-xs p-1">
-        <div class="flex justify-between items-center">
-            <span>9:41</span>
-            <div class="flex space-x-1">
-                <i class="fas fa-signal"></i>
-                <i class="fas fa-wifi"></i>
-                <i class="fas fa-battery-full"></i>
-            </div>
-        </div>
-    </div>
+
 
     <!-- 主容器 -->
     <div class="container mx-auto max-w-md bg-white min-h-screen rounded-t-3xl shadow-lg">
@@ -58,11 +48,11 @@
                     <pre><code>// 备忘录类
 public class Memento {
     private String state;
-    
+
     public Memento(String state) {
         this.state = state;
     }
-    
+
     public String getState() {
         return state;
     }
@@ -71,19 +61,19 @@ public class Memento {
 // 发起人
 public class Originator {
     private String state;
-    
+
     public void setState(String state) {
         this.state = state;
     }
-    
+
     public String getState() {
         return state;
     }
-    
+
     public Memento createMemento() {
         return new Memento(state);
     }
-    
+
     public void restoreFromMemento(Memento memento) {
         state = memento.getState();
     }
@@ -92,11 +82,11 @@ public class Originator {
 // 管理者
 public class Caretaker {
     private List<Memento> mementos = new ArrayList<>();
-    
+
     public void add(Memento memento) {
         mementos.add(memento);
     }
-    
+
     public Memento get(int index) {
         return mementos.get(index);
     }
@@ -149,4 +139,4 @@ public class Caretaker {
 
     <script src="../js/main.js"></script>
 </body>
-</html> 
+</html>

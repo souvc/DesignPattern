@@ -9,17 +9,7 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen">
-    <!-- 移动端状态栏 -->
-    <div class="status-bar bg-black text-white text-xs p-1 fixed top-0 left-0 right-0 z-50">
-        <div class="flex justify-between items-center">
-            <span>9:41</span>
-            <div class="flex space-x-1">
-                <i class="fas fa-signal"></i>
-                <i class="fas fa-wifi"></i>
-                <i class="fas fa-battery-full"></i>
-            </div>
-        </div>
-    </div>
+
 
     <!-- 主容器 -->
     <div class="container mx-auto max-w-md bg-white min-h-screen rounded-t-3xl shadow-lg mt-6">
@@ -60,11 +50,11 @@
 // 依赖对象
 public class DependentObject1 {
     private String data;
-    
+
     public void setData(String data) {
         this.data = data;
     }
-    
+
     public String getData() {
         return data;
     }
@@ -72,11 +62,11 @@ public class DependentObject1 {
 
 public class DependentObject2 {
     private String data;
-    
+
     public void setData(String data) {
         this.data = data;
     }
-    
+
     public String getData() {
         return data;
     }
@@ -86,12 +76,12 @@ public class DependentObject2 {
 public class CoarseGrainedObject {
     DependentObject1 do1 = new DependentObject1();
     DependentObject2 do2 = new DependentObject2();
-    
+
     public void setData(String data1, String data2) {
         do1.setData(data1);
         do2.setData(data2);
     }
-    
+
     public String[] getData() {
         return new String[] {do1.getData(), do2.getData()};
     }
@@ -100,11 +90,11 @@ public class CoarseGrainedObject {
 // 组合实体
 public class CompositeEntity {
     private CoarseGrainedObject cgo = new CoarseGrainedObject();
-    
+
     public void setData(String data1, String data2) {
         cgo.setData(data1, data2);
     }
-    
+
     public String[] getData() {
         return cgo.getData();
     }
@@ -113,13 +103,13 @@ public class CompositeEntity {
 // 客户端
 public class Client {
     private CompositeEntity compositeEntity = new CompositeEntity();
-    
+
     public void printData() {
         for (int i = 0; i < compositeEntity.getData().length; i++) {
             System.out.println("Data: " + compositeEntity.getData()[i]);
         }
     }
-    
+
     public void setData(String data1, String data2) {
         compositeEntity.setData(data1, data2);
     }
@@ -180,4 +170,4 @@ public class Client {
 
     <script src="../js/main.js"></script>
 </body>
-</html> 
+</html>

@@ -9,17 +9,7 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
-    <!-- 移动端状态栏 -->
-    <div class="status-bar bg-black text-white text-xs p-1">
-        <div class="flex justify-between items-center">
-            <span>9:41</span>
-            <div class="flex space-x-1">
-                <i class="fas fa-signal"></i>
-                <i class="fas fa-wifi"></i>
-                <i class="fas fa-battery-full"></i>
-            </div>
-        </div>
-    </div>
+
 
     <!-- 主容器 -->
     <div class="container mx-auto max-w-md bg-white min-h-screen rounded-t-3xl shadow-lg">
@@ -58,7 +48,7 @@
                     <pre><code>// 抽象对象
 public abstract class AbstractObject {
     protected String name;
-    
+
     public abstract boolean isNull();
     public abstract String getName();
 }
@@ -68,12 +58,12 @@ public class RealObject extends AbstractObject {
     public RealObject(String name) {
         this.name = name;
     }
-    
+
     @Override
     public boolean isNull() {
         return false;
     }
-    
+
     @Override
     public String getName() {
         return name;
@@ -86,7 +76,7 @@ public class NullObject extends AbstractObject {
     public boolean isNull() {
         return true;
     }
-    
+
     @Override
     public String getName() {
         return "Not Available";
@@ -96,7 +86,7 @@ public class NullObject extends AbstractObject {
 // 对象工厂
 public class ObjectFactory {
     public static final String[] names = {"Object1", "Object2", "Object3"};
-    
+
     public static AbstractObject getObject(String name) {
         for (String n : names) {
             if (n.equalsIgnoreCase(name)) {
@@ -154,4 +144,4 @@ public class ObjectFactory {
 
     <script src="../js/main.js"></script>
 </body>
-</html> 
+</html>

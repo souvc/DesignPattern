@@ -9,17 +9,7 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
-    <!-- 移动端状态栏 -->
-    <div class="status-bar bg-black text-white text-xs p-1">
-        <div class="flex justify-between items-center">
-            <span>9:41</span>
-            <div class="flex space-x-1">
-                <i class="fas fa-signal"></i>
-                <i class="fas fa-wifi"></i>
-                <i class="fas fa-battery-full"></i>
-            </div>
-        </div>
-    </div>
+
 
     <!-- 主容器 -->
     <div class="container mx-auto max-w-md bg-white min-h-screen rounded-t-3xl shadow-lg">
@@ -64,16 +54,16 @@ public interface Command {
 // 具体命令
 public class ConcreteCommand implements Command {
     private Receiver receiver;
-    
+
     public ConcreteCommand(Receiver receiver) {
         this.receiver = receiver;
     }
-    
+
     @Override
     public void execute() {
         receiver.action();
     }
-    
+
     @Override
     public void undo() {
         receiver.undo();
@@ -83,15 +73,15 @@ public class ConcreteCommand implements Command {
 // 调用者
 public class Invoker {
     private Command command;
-    
+
     public void setCommand(Command command) {
         this.command = command;
     }
-    
+
     public void executeCommand() {
         command.execute();
     }
-    
+
     public void undoCommand() {
         command.undo();
     }
@@ -144,4 +134,4 @@ public class Invoker {
 
     <script src="../js/main.js"></script>
 </body>
-</html> 
+</html>

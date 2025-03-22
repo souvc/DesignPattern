@@ -9,17 +9,7 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
-    <!-- 移动端状态栏 -->
-    <div class="status-bar bg-black text-white text-xs p-1">
-        <div class="flex justify-between items-center">
-            <span>9:41</span>
-            <div class="flex space-x-1">
-                <i class="fas fa-signal"></i>
-                <i class="fas fa-wifi"></i>
-                <i class="fas fa-battery-full"></i>
-            </div>
-        </div>
-    </div>
+
 
     <!-- 主容器 -->
     <div class="container mx-auto max-w-md bg-white min-h-screen rounded-t-3xl shadow-lg">
@@ -63,11 +53,11 @@ public interface Flyweight {
 // 具体享元类
 public class ConcreteFlyweight implements Flyweight {
     private String intrinsicState;
-    
+
     public ConcreteFlyweight(String intrinsicState) {
         this.intrinsicState = intrinsicState;
     }
-    
+
     @Override
     public void operation(String extrinsicState) {
         System.out.println("Intrinsic State: " + intrinsicState);
@@ -78,14 +68,14 @@ public class ConcreteFlyweight implements Flyweight {
 // 享元工厂
 public class FlyweightFactory {
     private Map<String, Flyweight> flyweights = new HashMap<>();
-    
+
     public Flyweight getFlyweight(String key) {
         if (!flyweights.containsKey(key)) {
             flyweights.put(key, new ConcreteFlyweight(key));
         }
         return flyweights.get(key);
     }
-    
+
     public int getFlyweightCount() {
         return flyweights.size();
     }
@@ -138,4 +128,4 @@ public class FlyweightFactory {
 
     <script src="../js/main.js"></script>
 </body>
-</html> 
+</html>

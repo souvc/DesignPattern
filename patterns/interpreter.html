@@ -9,17 +9,7 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
-    <!-- 移动端状态栏 -->
-    <div class="status-bar bg-black text-white text-xs p-1">
-        <div class="flex justify-between items-center">
-            <span>9:41</span>
-            <div class="flex space-x-1">
-                <i class="fas fa-signal"></i>
-                <i class="fas fa-wifi"></i>
-                <i class="fas fa-battery-full"></i>
-            </div>
-        </div>
-    </div>
+
 
     <!-- 主容器 -->
     <div class="container mx-auto max-w-md bg-white min-h-screen rounded-t-3xl shadow-lg">
@@ -63,11 +53,11 @@ public interface Expression {
 // 终结符表达式
 public class TerminalExpression implements Expression {
     private String data;
-    
+
     public TerminalExpression(String data) {
         this.data = data;
     }
-    
+
     @Override
     public boolean interpret(String context) {
         return context.contains(data);
@@ -78,12 +68,12 @@ public class TerminalExpression implements Expression {
 public class OrExpression implements Expression {
     private Expression expr1;
     private Expression expr2;
-    
+
     public OrExpression(Expression expr1, Expression expr2) {
         this.expr1 = expr1;
         this.expr2 = expr2;
     }
-    
+
     @Override
     public boolean interpret(String context) {
         return expr1.interpret(context) || expr2.interpret(context);
@@ -137,4 +127,4 @@ public class OrExpression implements Expression {
 
     <script src="../js/main.js"></script>
 </body>
-</html> 
+</html>

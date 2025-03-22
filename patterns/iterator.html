@@ -9,17 +9,7 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
-    <!-- 移动端状态栏 -->
-    <div class="status-bar bg-black text-white text-xs p-1">
-        <div class="flex justify-between items-center">
-            <span>9:41</span>
-            <div class="flex space-x-1">
-                <i class="fas fa-signal"></i>
-                <i class="fas fa-wifi"></i>
-                <i class="fas fa-battery-full"></i>
-            </div>
-        </div>
-    </div>
+
 
     <!-- 主容器 -->
     <div class="container mx-auto max-w-md bg-white min-h-screen rounded-t-3xl shadow-lg">
@@ -70,16 +60,16 @@ public interface Aggregate<T> {
 public class ConcreteIterator<T> implements Iterator<T> {
     private List<T> items;
     private int position = 0;
-    
+
     public ConcreteIterator(List<T> items) {
         this.items = items;
     }
-    
+
     @Override
     public boolean hasNext() {
         return position < items.size();
     }
-    
+
     @Override
     public T next() {
         return items.get(position++);
@@ -89,11 +79,11 @@ public class ConcreteIterator<T> implements Iterator<T> {
 // 具体聚合类
 public class ConcreteAggregate<T> implements Aggregate<T> {
     private List<T> items = new ArrayList<>();
-    
+
     public void addItem(T item) {
         items.add(item);
     }
-    
+
     @Override
     public Iterator<T> createIterator() {
         return new ConcreteIterator<>(items);
@@ -147,4 +137,4 @@ public class ConcreteAggregate<T> implements Aggregate<T> {
 
     <script src="../js/main.js"></script>
 </body>
-</html> 
+</html>

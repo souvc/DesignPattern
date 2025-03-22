@@ -9,17 +9,7 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
-    <!-- 移动端状态栏 -->
-    <div class="status-bar bg-black text-white text-xs p-1">
-        <div class="flex justify-between items-center">
-            <span>9:41</span>
-            <div class="flex space-x-1">
-                <i class="fas fa-signal"></i>
-                <i class="fas fa-wifi"></i>
-                <i class="fas fa-battery-full"></i>
-            </div>
-        </div>
-    </div>
+
 
     <!-- 主容器 -->
     <div class="container mx-auto max-w-md bg-white min-h-screen rounded-t-3xl shadow-lg">
@@ -58,11 +48,11 @@
                     <pre><code>// 处理者接口
 public abstract class Handler {
     protected Handler successor;
-    
+
     public void setSuccessor(Handler successor) {
         this.successor = successor;
     }
-    
+
     public abstract void handleRequest(Request request);
 }
 
@@ -136,4 +126,4 @@ public class ConcreteHandlerB extends Handler {
 
     <script src="../js/main.js"></script>
 </body>
-</html> 
+</html>

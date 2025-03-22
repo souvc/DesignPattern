@@ -9,17 +9,7 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen">
-    <!-- 移动端状态栏 -->
-    <div class="status-bar bg-black text-white text-xs p-1 fixed top-0 left-0 right-0 z-50">
-        <div class="flex justify-between items-center">
-            <span>9:41</span>
-            <div class="flex space-x-1">
-                <i class="fas fa-signal"></i>
-                <i class="fas fa-wifi"></i>
-                <i class="fas fa-battery-full"></i>
-            </div>
-        </div>
-    </div>
+
 
     <!-- 主容器 -->
     <div class="container mx-auto max-w-md bg-white min-h-screen rounded-t-3xl shadow-lg mt-6">
@@ -87,18 +77,18 @@ public class Target {
 public class FilterChain {
     private List<Filter> filters = new ArrayList<Filter>();
     private Target target;
-    
+
     public void addFilter(Filter filter) {
         filters.add(filter);
     }
-    
+
     public void execute(String request) {
         for (Filter filter : filters) {
             filter.execute(request);
         }
         target.execute(request);
     }
-    
+
     public void setTarget(Target target) {
         this.target = target;
     }
@@ -107,16 +97,16 @@ public class FilterChain {
 // 过滤器管理器
 public class FilterManager {
     FilterChain filterChain;
-    
+
     public FilterManager(Target target) {
         filterChain = new FilterChain();
         filterChain.setTarget(target);
     }
-    
+
     public void setFilter(Filter filter) {
         filterChain.addFilter(filter);
     }
-    
+
     public void filterRequest(String request) {
         filterChain.execute(request);
     }
@@ -125,11 +115,11 @@ public class FilterManager {
 // 客户端
 public class Client {
     FilterManager filterManager;
-    
+
     public void setFilterManager(FilterManager filterManager) {
         this.filterManager = filterManager;
     }
-    
+
     public void sendRequest(String request) {
         filterManager.filterRequest(request);
     }
@@ -141,7 +131,7 @@ public class InterceptingFilterDemo {
         FilterManager filterManager = new FilterManager(new Target());
         filterManager.setFilter(new AuthenticationFilter());
         filterManager.setFilter(new DebugFilter());
-        
+
         Client client = new Client();
         client.setFilterManager(filterManager);
         client.sendRequest("HOME");
@@ -203,4 +193,4 @@ public class InterceptingFilterDemo {
 
     <script src="../js/main.js"></script>
 </body>
-</html> 
+</html>
